@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mihail Georgiev - Lead Software Developer</title>
+<meta name="description" content="Resume of Mihail Georgiev, Lead Software Developer in Sofia, Bulgaria.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Martian+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1210;
+  --panel:#151a17;
+  --line:#2a322d;
+  --fg:#dcd9c6;
+  --dim:#8a9084;
+  --amber:#ffb000;
+  --amber-dim:#7a5a10;
+  --cyan:#7fd6c2;
+  --mono:"Martian Mono",ui-monospace,Menlo,monospace;
+  --sans:"IBM Plex Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4rem}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1.0625rem/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--cyan);text-underline-offset:.2em}
+a:hover{color:var(--amber)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.wrap{width:min(100% - 2rem,64rem);margin-inline:auto}
+.mono{font-family:var(--mono)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;gap:1.5rem;align-items:center;justify-content:space-between;min-height:3rem;font:300 .8rem var(--mono)}
+.bar .ps{color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .ps b{color:var(--amber);font-weight:400}
+.bar nav{display:flex;gap:1.1rem}
+.bar nav a{color:var(--fg);text-decoration:none}
+.bar nav a:hover{color:var(--amber)}
+@media (max-width:640px){.bar .ps{display:none}.bar nav{width:100%;justify-content:space-between}}
+
+/* hero */
+.hero{padding:clamp(3rem,9vw,7rem) 0 clamp(2.5rem,6vw,4.5rem)}
+.sh{font:300 .85rem/1.9 var(--mono);color:var(--dim)}
+.sh .cmd{color:var(--fg)}
+.sh .cmd::before{content:"$ ";color:var(--amber)}
+.sh .out{display:block;color:var(--dim)}
+.hero h1{margin:.6rem 0 .4rem;font:600 clamp(2.2rem,8.6vw,5.6rem)/1 var(--mono);letter-spacing:-.045em;color:var(--amber)}
+.hero .role{font:400 clamp(1.05rem,2.4vw,1.5rem)/1.3 var(--mono);color:var(--fg);margin:0}
+.hero .summary{max-width:60ch;margin:1.8rem 0 0;color:var(--fg)}
+.contact{display:flex;flex-wrap:wrap;gap:.5rem 1.8rem;margin:2rem 0 0;padding:0;list-style:none;font:300 .85rem var(--mono)}
+.contact span{color:var(--dim)}
+/* typed intro: runs once */
+.type{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;max-width:0;animation:type var(--d,1s) steps(var(--n,12)) var(--t,0s) forwards}
+.line{opacity:0;animation:show 0s var(--t,0s) forwards}
+.caret{display:inline-block;width:.6em;height:1.05em;background:var(--amber);vertical-align:text-bottom;animation:blink 1s steps(1) 6}
+@keyframes type{to{max-width:var(--w)}}
+@keyframes show{to{opacity:1}}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .type{animation:none;max-width:none}
+  .line{animation:none;opacity:1}
+  .caret{animation:none}
+  html{scroll-behavior:auto}
+}
+
+/* sections */
+section{padding:clamp(2.5rem,6vw,4.5rem) 0;border-top:1px solid var(--line)}
+h2{margin:0 0 2rem;font:400 clamp(1rem,2.2vw,1.2rem)/1.4 var(--mono);color:var(--fg)}
+h2::before{content:"$ ";color:var(--amber)}
+h2 small{color:var(--dim);font-size:inherit;font-weight:300}
+h3{margin:0;font:600 1.15rem/1.3 var(--sans);color:var(--fg)}
+
+/* timeline lanes */
+.lanes{--n:12;margin:0 0 3.5rem;padding:0;list-style:none}
+.lane{display:grid;grid-template-columns:9.5rem 1fr;align-items:center;gap:.8rem;min-height:2rem}
+.lane .who{font:300 .78rem var(--mono);color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lane .trk{position:relative;height:1.1rem;background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px calc(100%/var(--n)))}
+.lane .seg{position:absolute;top:.3rem;bottom:.3rem;left:calc((var(--s) - 2015)/var(--n)*100%);width:calc((var(--e) - var(--s))/var(--n)*100%);background:var(--amber-dim);border-radius:1px}
+.lane.on .seg{background:linear-gradient(90deg,var(--amber-dim),var(--amber))}
+.lane.on .seg::after{content:"";position:absolute;right:-1px;top:-.25rem;bottom:-.25rem;width:2px;background:var(--amber)}
+.lane.axis{min-height:1.4rem}
+.axis .trk{height:1rem;background:none;font:300 .68rem var(--mono);color:var(--dim)}
+.axis .trk span{position:absolute;top:0;left:calc((var(--y) - 2015)/var(--n)*100%);transform:translateX(-1px);padding-left:.25rem;border-left:1px solid var(--line)}
+@media (max-width:640px){
+  .lane{grid-template-columns:1fr;gap:.1rem;padding:.25rem 0}
+  .lane.axis .who{display:none}
+  .axis .trk span:nth-child(even){display:none}
+}
+
+/* experience entries */
+.log{margin:0;padding:0;list-style:none}
+.entry{display:grid;grid-template-columns:11rem 1fr;gap:0 2rem;padding:0 0 2.6rem}
+.entry .meta{font:300 .8rem/1.6 var(--mono);color:var(--dim);padding-top:.3rem}
+.entry .meta b{display:block;color:var(--amber);font-weight:400}
+.entry .body{position:relative;padding-left:1.8rem;border-left:1px solid var(--line)}
+.entry:last-child .body{border-left-color:transparent}
+.entry .body::before{content:"";position:absolute;left:-5px;top:.55rem;width:9px;height:9px;border-radius:50%;background:var(--bg);border:2px solid var(--amber)}
+.entry.on .body::before{background:var(--amber)}
+.entry .at{margin:.15rem 0 .8rem;color:var(--cyan);font:300 .85rem var(--mono)}
+ul.pts{margin:0;padding:0;list-style:none;max-width:68ch}
+ul.pts li{position:relative;padding-left:1.2rem;margin:.35rem 0}
+ul.pts li::before{content:"+";position:absolute;left:0;color:var(--amber);font:400 .85rem/1.9 var(--mono)}
+ul.pts ul{padding:0;margin:.3rem 0 .5rem;list-style:none}
+ul.pts ul li::before{content:"-";color:var(--dim)}
+@media (max-width:760px){
+  .entry{grid-template-columns:1fr}
+  .entry .meta{padding:0 0 .3rem 1.8rem}
+  .entry .meta b{display:inline;margin-right:.8rem}
+}
+
+/* stack */
+.stack{display:grid;gap:1.6rem}
+.row{display:grid;grid-template-columns:11rem 1fr;gap:.4rem 2rem}
+.row dt{font:300 .8rem/1.9 var(--mono);color:var(--dim)}
+.row dd{margin:0;display:flex;flex-wrap:wrap;gap:.4rem .5rem}
+.tag{font:300 .8rem/1 var(--mono);padding:.45rem .6rem;border:1px solid var(--line);background:var(--panel);border-radius:2px}
+.tag.core{color:var(--amber);border-color:var(--amber-dim)}
+@media (max-width:760px){.row{grid-template-columns:1fr}}
+
+/* projects */
+.proj{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.proj article{background:var(--panel);padding:1.4rem 1.3rem}
+.proj h3{font:600 .95rem var(--mono);color:var(--amber);margin-bottom:.6rem}
+.proj p{margin:0;color:var(--fg);font-size:.98rem}
+.proj .win{margin-top:.8rem;color:var(--cyan);font:300 .8rem var(--mono)}
+.community{margin:2.4rem 0 0;max-width:68ch}
+.community h3{font:300 .85rem var(--mono);color:var(--dim);margin-bottom:.6rem}
+
+/* education */
+.edu{display:grid;gap:2rem}
+.edu .entry{padding-bottom:0}
+.langs{margin:0;padding:0;list-style:none;display:grid;gap:.5rem;font:300 .9rem var(--mono)}
+.langs li{display:flex;gap:1rem;max-width:34rem;border-bottom:1px dashed var(--line);padding-bottom:.5rem}
+.langs li span:first-child{width:7.5rem;color:var(--fg)}
+.langs li span:last-child{color:var(--dim)}
+
+footer{border-top:1px solid var(--line);padding:2.2rem 0 3.5rem;font:300 .8rem var(--mono);color:var(--dim)}
+footer .caret{animation:none}
+
+@media print{
+  :root{--bg:#fff;--panel:#fff;--line:#ccc;--fg:#111;--dim:#555;--amber:#b25e00;--amber-dim:#d9a25c;--cyan:#06604f}
+  .bar,.caret{display:none}
+  .type,.line{animation:none;max-width:none;opacity:1}
+  section{break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="ps"><b>mihail</b>@sofia:~</span>
+    <nav aria-label="Sections">
+      <a href="#experience">experience</a>
+      <a href="#stack">stack</a>
+      <a href="#projects">projects</a>
+      <a href="#education">education</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div class="sh" aria-hidden="false">
+      <div><span class="cmd"><span class="type" style="--w:9ch;--n:6;--d:.5s;--t:.3s">whoami</span></span></div>
+    </div>
+    <h1 class="line" style="--t:.9s">Mihail Georgiev</h1>
+    <p class="role line" style="--t:1.1s">Lead Software Developer</p>
+    <p class="summary line" style="--t:1.3s">Front-end architect and full-stack lead. I've shipped products from first commit to public release, led teams and worked directly with clients across Europe and the US.</p>
+    <ul class="contact line" style="--t:1.5s">
+      <li><span>loc</span> Sofia, Bulgaria</li>
+      <li><span>mail</span> <a href="mailto:mihaildono@gmail.com">mihaildono@gmail.com</a></li>
+      <li><span>in</span> <a href="https://linkedin.com/in/mihail-georgiev-lead/">linkedin.com/in/mihail-georgiev-lead</a></li>
+      <li><span>tel</span> <a href="tel:+359894643622">+359 894 643 622</a></li>
+    </ul>
+    <p class="sh line" style="--t:1.7s;margin:2rem 0 0"><span class="cmd">&nbsp;</span><span class="caret"></span></p>
+  </div>
+</div>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>git log --graph <small>2015 to now</small></h2>
+
+    <ol class="lanes" aria-label="Career timeline">
+      <li class="lane axis"><span class="who"></span><span class="trk" aria-hidden="true">
+        <span style="--y:2015">15</span><span style="--y:2016">16</span><span style="--y:2017">17</span><span style="--y:2018">18</span><span style="--y:2019">19</span><span style="--y:2020">20</span><span style="--y:2021">21</span><span style="--y:2022">22</span><span style="--y:2023">23</span><span style="--y:2024">24</span><span style="--y:2025">25</span><span style="--y:2026">26</span></span></li>
+      <li class="lane on"><span class="who">OSI</span><span class="trk"><i class="seg" style="--s:2025;--e:2026.85"></i></span></li>
+      <li class="lane on"><span class="who">DivingBuddy</span><span class="trk"><i class="seg" style="--s:2024;--e:2026.85"></i></span></li>
+      <li class="lane"><span class="who">EFG</span><span class="trk"><i class="seg" style="--s:2022;--e:2023"></i></span></li>
+      <li class="lane on"><span class="who">EPAM</span><span class="trk"><i class="seg" style="--s:2020;--e:2026.85"></i></span></li>
+      <li class="lane"><span class="who">Chatchamp</span><span class="trk"><i class="seg" style="--s:2019;--e:2020"></i></span></li>
+      <li class="lane"><span class="who">BBVA</span><span class="trk"><i class="seg" style="--s:2018;--e:2019"></i></span></li>
+      <li class="lane"><span class="who">Vectorworks</span><span class="trk"><i class="seg" style="--s:2016;--e:2018"></i></span></li>
+      <li class="lane"><span class="who">Hack Bulgaria</span><span class="trk"><i class="seg" style="--s:2015;--e:2016"></i></span></li>
+    </ol>
+
+    <ol class="log">
+      <li class="entry on">
+        <div class="meta"><b>2025 - ongoing</b>OSI</div>
+        <div class="body">
+          <h3>Front-end Architect</h3>
+          <p class="at">React app for a US-based tannery services client</p>
+          <ul class="pts">
+            <li>Own the React app and work directly with the client to implement features.</li>
+            <li>Migrated deprecated packages and tooling, including CRA, Vite and TypeScript.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="entry on">
+        <div class="meta"><b>2024 - ongoing</b>DivingBuddy</div>
+        <div class="body">
+          <h3>Co-founder, Front-end Architect</h3>
+          <p class="at">Dive booking service, built with a team of three (1 FE, 1 BE, 1 PO)</p>
+          <ul class="pts">
+            <li>Diving is a hobby of mine, and this is a joint passion project.</li>
+            <li>Chose Next.js with server-side rendered pages, because dive spots are low-tech places with slow internet.</li>
+            <li>Built a reusable, fully documented UI component library.</li>
+            <li>Deploy with Kamal to Hetzner machines.</li>
+            <li>Fully translated into several languages.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="entry">
+        <div class="meta"><b>2022 - 2023</b>EFG</div>
+        <div class="body">
+          <h3>Front-end Contractor</h3>
+          <p class="at">Streaming platform, a Twitch competitor</p>
+          <ul class="pts">
+            <li>Architect of the platform in a team of three (1 FE, 1 BE, 1 PO).</li>
+            <li>Designed the platform from scratch.</li>
+            <li>Released the MVP and planned the architecture for the following year.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="entry on">
+        <div class="meta"><b>2020 - ongoing</b>EPAM</div>
+        <div class="body">
+          <h3>JavaScript Lead</h3>
+          <p class="at">Projects from medical to gambling, across Europe and US timezones</p>
+          <ul class="pts">
+            <li>SAP (2024 - ongoing):
+              <ul>
+                <li>Manage an internal CI/CD orchestration app for SAP projects.</li>
+                <li>Full-stack development with NestJS and Angular.</li>
+                <li>Handle production incidents for users, including database and Kubernetes resources.</li>
+              </ul>
+            </li>
+            <li>Lead a wide array of projects, from medical to gambling sectors.</li>
+            <li>Establish business and architectural initiatives.</li>
+            <li>Work across several timezones between Europe and the USA.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="entry">
+        <div class="meta"><b>2019 - 2020</b>Chatchamp</div>
+        <div class="body">
+          <h3>Full-stack Software Developer</h3>
+          <p class="at">Chatbot marketing platform on Facebook and WhatsApp, 4-person startup (3 co-founders and me)</p>
+          <ul class="pts">
+            <li>Led development and handled the whole application in React, Rails and Node.</li>
+            <li>Worked directly with clients to establish requirements.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="entry">
+        <div class="meta"><b>2018 - 2019</b>BBVA</div>
+        <div class="body">
+          <h3>Front-end Developer</h3>
+          <p class="at">Bank data manipulation platform</p>
+          <ul class="pts">
+            <li>Developed the platform from scratch to MVP and public release.</li>
+            <li>Architected the data manipulation segment.</li>
+            <li>Used the latest React and Redux with Redux Saga and React Router, alongside ExtJS.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="entry">
+        <div class="meta"><b>2016 - 2018</b>Vectorworks Inc.</div>
+        <div class="body">
+          <h3>Full-stack Software Developer</h3>
+          <p class="at">Cloud service for Vectorworks</p>
+          <ul class="pts">
+            <li>Built numerous business logic components in Python and Django, with AWS as data storage.</li>
+            <li>Migrated the codebase from Python 2 to Python 3.</li>
+            <li>Worked in legacy CSS and JS with Knockout.js, then upgraded to React and MobX (ES6).</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <h2>ls ~/stack</h2>
+    <dl class="stack">
+      <div class="row"><dt>core</dt><dd><span class="tag core">React</span><span class="tag core">Redux</span><span class="tag core">TypeScript</span><span class="tag core">Next.js</span><span class="tag core">Tailwind</span></dd></div>
+      <div class="row"><dt>front-end, also used</dt><dd><span class="tag">Redux Saga</span><span class="tag">React Router</span><span class="tag">MobX</span><span class="tag">Angular</span><span class="tag">ExtJS</span><span class="tag">Knockout.js</span></dd></div>
+      <div class="row"><dt>back-end</dt><dd><span class="tag">Node</span><span class="tag">NestJS</span><span class="tag">Python</span><span class="tag">Django</span><span class="tag">Ruby on Rails</span></dd></div>
+      <div class="row"><dt>infrastructure</dt><dd><span class="tag">AWS</span><span class="tag">Kubernetes</span><span class="tag">CI/CD</span><span class="tag">Kamal</span><span class="tag">Hetzner</span></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>ls ~/projects</h2>
+    <div class="proj">
+      <article>
+        <h3>FineGuy Bot</h3>
+        <p>Crypto trading bot. Set up different strategies in Python, and get analysis, graphics and tests for different coins and periods.</p>
+      </article>
+      <article>
+        <h3>EZY (IoT)</h3>
+        <p>Uses an ESP32e with an NFC reader to detect NFC markers and interact with them.</p>
+        <p class="win">Won Nemetschek innovation week</p>
+      </article>
+      <article>
+        <h3>QR-Payments</h3>
+        <p>Instant on-site payments with QR codes.</p>
+      </article>
+      <article>
+        <h3>Padawan project</h3>
+        <p>Curated learning programs.</p>
+      </article>
+    </div>
+    <div class="community">
+      <h3>cat ~/community</h3>
+      <ul class="pts">
+        <li>Public speaker on personal development and careers in IT.</li>
+        <li>Mentor students into IT.</li>
+        <li>Certified Technical Interviewer and Mentor.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2>cat ~/education ~/languages</h2>
+    <div class="edu">
+      <ol class="log">
+        <li class="entry">
+          <div class="meta"><b>GPA 5.00 / 6</b>UNWE</div>
+          <div class="body">
+            <h3>Bachelor of Business Informatics and Communications</h3>
+            <p class="at">University of National and World Economy</p>
+            <p style="margin:0;max-width:68ch">Statistics, mathematics, databases, algorithms, computer architectures.</p>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="meta"><b>2015 - 2016</b>Hack Bulgaria</div>
+          <div class="body">
+            <h3>Ruby/Rails</h3>
+            <p class="at">Programming course</p>
+            <p style="margin:0;max-width:68ch">Created SteamHelper, which analyses the market and suggests profitable trades.</p>
+          </div>
+        </li>
+      </ol>
+      <ul class="langs">
+        <li><span>English</span><span>IELTS 7.5, EPAM 2021: C1+</span></li>
+        <li><span>Spanish</span><span>A1</span></li>
+        <li><span>Bulgarian</span><span>Native</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">$ exit <span class="caret"></span></div>
+</footer>
+
+</body>
+</html>
